@@ -10,6 +10,11 @@ page_bg_img = '''
 .stApp {
   background: linear-gradient(to right, #006233, #C8102E);
 }
+
+textarea {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 </style>
 '''
 
