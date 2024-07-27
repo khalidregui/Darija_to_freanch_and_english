@@ -17,8 +17,8 @@ if st.button("Traduire"):
         english_translation = translate_text(darija_text, "English")
 
         st.subheader("Traductions :")
-        st.write(f"**Arabe :** {arabic_translation}")
-        st.write(f"**Français :** {french_translation}")
-        st.write(f"**Anglais :** {english_translation}")
+        st.write(f"**Arabe :** {arabic_translation['choices'][0]['message']['content'].strip()}")
+        st.write(f"**Français :** {french_translation['choices'][0]['message']['content'].strip()}")
+        st.write(f"**Anglais :** {english_translation['choices'][0]['message']['content'].strip()}")
     else:
         st.error("Veuillez entrer une phrase en Darija.")
