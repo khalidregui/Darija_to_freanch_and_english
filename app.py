@@ -8,7 +8,7 @@ st.set_page_config(page_title="Traducteur Darija", layout="centered")
 page_bg_img = '''
 <style>
 .stApp {
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #006233, #C8102E);
 }
 </style>
 '''
