@@ -11,6 +11,11 @@ page_bg_img = '''
   background: linear-gradient(to right, #006233, #C8102E);
 }
 
+input, textarea {
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
 textarea {
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
