@@ -8,7 +8,7 @@ def translate_text(text, target_language):
     """
     Utilise l'API OpenAI pour traduire le texte en langue cible.
     """
-    prompt = f"Traduisez ce texte en {target_language} : {text}"
+    prompt = f"Translate this text to {target_language}: {text}"
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
