@@ -17,7 +17,7 @@ page_bg_img = '''
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("Traducteur Darija")
-st.write("Traduisez des phrases en Darija (dialecte marocain) en Arabe, Français et Anglais.")
+st.write("Traduisez des phrases en Darija (dialecte marocain) en Français et Anglais.")
 
 # Entrée utilisateur
 darija_text = st.text_area("Entrez une phrase en Darija :")
