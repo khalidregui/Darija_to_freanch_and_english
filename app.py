@@ -8,7 +8,7 @@ st.set_page_config(page_title="Traducteur Darija", layout="centered")
 page_bg_img = '''
 <style>
 .stApp {
-  background-image: url("moroccobg.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("moroccobg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
