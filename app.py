@@ -10,6 +10,8 @@ page_bg_img = '''
 .stApp {
   background-image: url("moroccobg.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 </style>
 '''
