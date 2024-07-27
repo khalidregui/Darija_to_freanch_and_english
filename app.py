@@ -12,12 +12,10 @@ darija_text = st.text_area("Entrez une phrase en Darija :")
 
 if st.button("Traduire"):
     if darija_text:
-        arabic_translation = translate_text(darija_text, "Arabic")
         french_translation = translate_text(darija_text, "French")
         english_translation = translate_text(darija_text, "English")
 
         st.subheader("Traductions :")
-        st.write(f"**Arabe :** {arabic_translation}")
         st.write(f"**Français :** {french_translation}")
         st.write(f"**Anglais :** {english_translation}")
     else:
