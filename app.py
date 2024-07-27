@@ -4,8 +4,17 @@ from translator import translate_text
 # Configuration de la page
 st.set_page_config(page_title="Traducteur Darija", layout="centered")
 
-# Affichage de l'image de fond
-st.image("moroccobg.jpj", use_column_width=True)
+# CSS pour définir l'image de fond
+page_bg_img = '''
+<style>
+.stApp {
+  background-image: url("morocco.jpg");
+  background-size: cover;
+}
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("Traducteur Darija")
 st.write("Traduisez des phrases en Darija (dialecte marocain) en Arabe, Français et Anglais.")
