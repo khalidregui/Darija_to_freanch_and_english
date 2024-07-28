@@ -20,7 +20,7 @@ if st.button("Traduire"):
     if darija_text:
         # Appel à l'API OpenAI pour la traduction
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            engine="gpt-4",
             prompt=f"Traduisez cette phrase en Darija en Français et en Anglais:\n\nDarija: {darija_text}\n\nFrançais:\n\nAnglais:",
             max_tokens=150,
             n=1,
