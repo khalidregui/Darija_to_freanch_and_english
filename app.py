@@ -1,43 +1,43 @@
 import streamlit as st
-from translator import translate_text
+import openai
+import os
 
-# Configuration de la page
-st.set_page_config(page_title="Traducteur Darija", layout="centered")
+# Charger la clé API OpenAI depuis les variables d'environnement
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-# CSS pour définir l'image de fond
-page_bg_img = '''
-<style>
-.stApp {
-  background: linear-gradient(to right, #006233, #C8102E);
-}
+# Configuration de la page Streamlit
+st.set_page_config(page_title="Traducteur Darija", page_icon="🌍", layout="centered")
 
-input, textarea {
-  color: white !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
-}
+# Titre de l'application
+st.title("Traducteur Darija 🌍")
+st.markdown("### Traduisez des phrases en Darija vers le Français et l'Anglais")
 
-textarea {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-</style>
-'''
+# Saisie de la phrase en Darija
+darija_text = st.text_area("Entrez une phrase en Darija:")
 
-st.markdown(page_bg_img, unsafe_allow_html=True)
-
-st.title("Traducteur Darija")
-st.write("Traduisez des phrases en Darija (dialecte marocain) en Français et Anglais.")
-
-# Entrée utilisateur
-darija_text = st.text_area("Entrez une phrase en Darija :")
-
+# Bouton de traduction
 if st.button("Traduire"):
     if darija_text:
-        french_translation = translate_text(darija_text, "French")
-        english_translation = translate_text(darija_text, "English")
-
-        st.subheader("Traductions :")
-        st.write(f"**Français :** {french_translation}")
-        st.write(f"**Anglais :** {english_translation}")
+        # Appel à l'API OpenAI pour la traduction
+        response = openai.Completion.create(
+            engine="text-davinci-003",
+            prompt=f"Traduisez cette phrase en Darija en Français et en Anglais:\n\nDarija: {darija_text}\n\nFrançais:\n\nAnglais:",
+            max_tokens=150,
+            n=1,
+            stop=None,
+            temperature=0.5,
+        )
+        
+        # Extraction des traductions
+        translations = response.choices[0].text.strip().split("\n\n")
+        french_translation = translations[0].replace("Français:", "").strip()
+        english_translation = translations[1].replace("Anglais:", "").strip()
+        
+        # Affichage des résultats
+        st.markdown("### Traduction en Français")
+        st.write(french_translation)
+        
+        st.markdown("### Traduction en Anglais")
+        st.write(english_translation)
     else:
         st.error("Veuillez entrer une phrase en Darija.")
