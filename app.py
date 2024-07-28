@@ -20,9 +20,12 @@ darija_text = st.text_area("Entrez une phrase en Darija:")
 if st.button("Traduire"):
     if darija_text:
         # Appel à l'API OpenAI pour la traduction
-        response = openai.Completion.create(
-            engine="gpt-4",
-            prompt=f"Traduisez cette phrase en Darija en Français et en Anglais:\n\nDarija: {darija_text}\n\nFrançais:\n\nAnglais:",
+        response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant that translates Darija to French and English."},
+                {"role": "user", "content": f"Traduisez cette phrase en Darija en Français et en Anglais:\n\nDarija: {darija_text}\n\nFrançais:\n\nAnglais:"}
+            ],
             max_tokens=150,
             n=1,
             stop=None,
@@ -30,7 +33,7 @@ if st.button("Traduire"):
         )
         
         # Extraction des traductions
-        translations = response.choices[0].text.strip().split("\n\n")
+        translations = response.choices[0].message['content'].strip().split("\n\n")
         french_translation = translations[0].replace("Français:", "").strip()
         english_translation = translations[1].replace("Anglais:", "").strip()
         
