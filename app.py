@@ -1,8 +1,9 @@
 import streamlit as st
 import openai
 import os
+from hello import hello
 
-# Charger la clé API OpenAI depuis les variables d'environnement
+hello()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Configuration de la page Streamlit
